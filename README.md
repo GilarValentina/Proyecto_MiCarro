@@ -1,78 +1,79 @@
-# 🚗 MiCarro — Sistema Móvil para el Control de Mantenimiento Vehicular
+# MiCarro — Sistema Móvil para el Control de Mantenimiento Vehicular
 
-![Android](https://img.shields.io/badge/Android-Native-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![Kotlin](https://img.shields.io/badge/Kotlin-1.9+-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
-![Architecture](https://img.shields.io/badge/Architecture-MVVM%20%2F%20Clean-blue?style=for-the-badge)
-![Offline](https://img.shields.io/badge/Mode-100%25%20Offline%20First-green?style=for-the-badge)
+![Android](https://img.shields.io/badge/Android-Native-3DDC84?style=flat-square)
+![Kotlin](https://img.shields.io/badge/Kotlin-1.9+-7F52FF?style=flat-square)
 
-**MiCarro** es una aplicación nativa para Android diseñada para ayudar a propietarios particulares a llevar un registro organizado, confiable y centralizado del mantenimiento preventivo y correctivo de sus vehículos, kilometraje, repuestos, costos y documentos legales.
+MiCarro es una aplicación nativa para el sistema operativo Android diseñada para administrar de forma centralizada y organizada el mantenimiento preventivo y correctivo de vehículos particulares, el registro de kilometraje, repuestos, costos asociados y documentos legales.
 
 ---
 
-## 📌 Problema que Resuelve
+## Problema que Resuelve
 
-Muchos propietarios de vehículos guardan facturas impresas, notas dispersas o dependen únicamente de su memoria para recordar cambios de aceite, revisión de frenos o renovación de documentos como el SOAT y la revisión técnico-mecánica. **MiCarro** centraliza toda esta información y genera alertas oportunas por fecha y kilometraje reportado.
-
----
-
-## ✨ Características Principales (MVP)
-
-* 🚘 **Gestión de Vehículos:** Registro de automóviles, camionetas y motocicletas con datos básicos (placa, marca, línea, modelo, año, odómetro actual) y soporte para vehículo principal.
-* 📈 **Control de Kilometraje:** Historial de lecturas con validaciones automáticas ante discrepancias o lecturas menores a la anterior.
-* 📋 **Plan de Mantenimiento:** Creación y programación de actividades preventivas por fecha, kilometraje o ambos criterios, con categorías personalizables (aceite, frenos, llantas, batería, etc.).
-* 🛠️ **Registro de Mantenimientos & Repuestos:** Control detallado de servicios realizados, costos de mano de obra, repuestos instalados con proveedor y garantía.
-* 🔔 **Alertas Locales & Documentos:** Recordatorios offline vía `WorkManager` para próximos mantenimientos y vencimientos de SOAT o revisión técnico-mecánica.
-* 📊 **Historial y Resumen de Gastos:** Filtros avanzados por fecha, categoría y taller, junto con resúmenes gráficos de gastos.
-* 📂 **Exportación y Respaldo:** Capacidad de exportar historiales y realizar copias de seguridad locales.
+Muchos propietarios de vehículos conservan facturas impresas, registros dispersos o dependen de la memoria para realizar actividades periódicas como el cambio de aceite, revisión de frenos o la renovación de documentos legales (SOAT y revisión técnico-mecánica). MiCarro consolida esta información y genera recordatorios oportunos basados en fechas y kilometraje reportado.
 
 ---
 
-## 🛠️ Stack Tecnológico & Arquitectura
+## Características Principales (MVP)
 
-* **Lenguaje:** [Kotlin](https://kotlinlang.org/)
-* **UI Framework:** [Jetpack Compose](https://developer.android.com/jetpack/compose) / Material Design 3
+* **Gestión de Vehículos:** Registro de automóviles, camionetas y motocicletas con datos básicos (placa, marca, línea, modelo, año, odómetro actual) y selección de vehículo principal.
+* **Control de Kilometraje:** Historial de lecturas con validaciones automáticas ante inconsistencias o lecturas inferiores a la anterior.
+* **Plan de Mantenimiento:** Creación y programación de actividades preventivas por fecha, kilometraje o ambos criterios, con categorías personalizables.
+* **Registro de Mantenimientos y Repuestos:** Control detallado de servicios realizados, mano de obra, repuestos instalados con datos de proveedor y garantía.
+* **Alertas Locales y Documentos:** Recordatorios offline programados mediante WorkManager para actividades próximas a vencer y vencimientos de documentos legales.
+* **Historial y Resumen de Gastos:** Filtros avanzados por fecha, categoría y taller, acompañados de resúmenes consolidados de costos.
+* **Exportación y Respaldo:** Capacidad de exportar historiales y generar copias de seguridad locales.
+
+---
+
+## Stack Tecnológico y Arquitectura
+
+* **Lenguaje de Programación:** [Kotlin](https://kotlinlang.org/)
+* **Interfaz de Usuario:** [Jetpack Compose](https://developer.android.com/jetpack/compose) / Material Design 3
 * **Persistencia de Datos:** [Room Database](https://developer.android.com/training/data-storage/room) (SQLite)
-* **Segundo Plano / Alertas:** [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager)
-* **Arquitectura:** **MVVM (Model-View-ViewModel)** orientado a Clean Architecture
-  $$\text{UI (Compose)} \longrightarrow \text{ViewModel} \longrightarrow \text{Repository} \longrightarrow \text{Room DAO}$$
+* **Procesos en Segundo Plano:** [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager)
 * **Navegación:** Jetpack Navigation
+* **Patrón de Arquitectura:** Model-View-ViewModel (MVVM) orientado a Clean Architecture
+
+```
+UI (Compose) ──> ViewModel ──> Repository ──> Room DAO
+```
 
 ---
 
-## 👥 Equipo de Desarrollo
+## Equipo de Desarrollo
 
 * **Gilar** — Módulo de Vehículos, Lecturas de Kilometraje, Historial Cronológico y Resumen de Gastos.
 * **Tomas** — Módulo de Plan de Mantenimiento, Registro de Servicios, Repuestos y Alertas/WorkManager.
 
 ---
 
-## 🚀 Requisitos de Instalación y Ejecución
+## Requisitos de Instalación y Ejecución
 
 ### Prerrequisitos
-* **Android Studio:** Ladybug (2024.2.1) o superior.
+* **Android Studio:** Ladybug (2024.2.1) o versión superior.
 * **JDK:** Java 17 o superior.
-* **Dispositivo / Emulador:** Android 8.0 (API level 26) o superior.
+* **Dispositivo / Emulador:** Android 8.0 (API Level 26) o superior.
 
-### Pasos para Ejecutar
+### Pasos para Ejecutar el Proyecto
 1. Clonar el repositorio:
    ```bash
    git clone https://github.com/GilarValentina/Proyecto_MiCarro.git
    cd Proyecto_MiCarro
    ```
 2. Abrir el proyecto en **Android Studio**.
-3. Sincronizar el proyecto con Gradle (**Sync Project with Gradle Files**).
-4. Seleccionar un emulador o dispositivo físico con depuración USB activada.
-5. Ejecutar la aplicación (`Shift + F10` o clic en **Run 'app'**).
+3. Sincronizar los archivos del proyecto con Gradle (*Sync Project with Gradle Files*).
+4. Seleccionar un emulador o dispositivo físico con la opción de depuración USB activa.
+5. Ejecutar la aplicación (*Run 'app'*).
 
 ---
 
-## 🔒 Privacidad & Modo Offline (RNF-04 / RNF-08)
+## Privacidad y Modo Offline (RNF-04 / RNF-08)
 
-* **100% Offline First:** La aplicación funciona completamente sin necesidad de conexión a Internet. Todos los datos, historiales y alertas permanecen en el almacenamiento local del dispositivo del usuario.
-* **Privacidad:** No se recopilan ni transmiten datos sensibles como placas, números VIN o información personal a servidores externos.
+* **Operación Offline:** La aplicación opera de manera local sin depender de conectividad a Internet. La totalidad de la información se conserva de forma segura en el almacenamiento interno del dispositivo.
+* **Privacidad de Datos:** La solución no recopila ni transmite información sensible (como placas o números VIN) a servidores externos.
 
 ---
 
-## 📝 Licencia & Curso
+## Licencia y Contexto Académico
 
 Proyecto Integrador desarrollado para el **Curso de Aplicaciones Móviles**.
