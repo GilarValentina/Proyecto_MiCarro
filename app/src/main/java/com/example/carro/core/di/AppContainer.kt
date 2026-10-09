@@ -2,6 +2,7 @@ package com.example.carro.core.di
 
 import android.content.Context
 import com.example.carro.core.database.MiCarroDatabase
+import com.example.carro.data.repository.PlanMantenimientoRepository
 
 /**
  * Contenedor de dependencias manual (RNF-12: separación de capas y dependencias inyectables).
@@ -21,4 +22,9 @@ class AppContainer(context: Context) {
     val repuestoDao get() = database.repuestoDao()
     val documentoDao get() = database.documentoDao()
     val alertaDao get() = database.alertaDao()
+
+    // Repositorios (cada módulo publica el suyo aquí).
+    val planMantenimientoRepository by lazy {
+        PlanMantenimientoRepository(actividadDao, categoriaDao, vehiculoDao)
+    }
 }
