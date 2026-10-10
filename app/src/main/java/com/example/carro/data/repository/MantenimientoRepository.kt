@@ -33,7 +33,8 @@ class MantenimientoRepository(
             lista.map { entity ->
                 MantenimientoResumen(
                     mantenimiento = entity.toDomain(emptyList()),
-                    cantidadRepuestos = repuestoDao.contarPorMantenimiento(entity.id)
+                    cantidadRepuestos = repuestoDao.contarPorMantenimiento(entity.id),
+                    costoTotal = entity.costoTotal
                 )
             }
         }

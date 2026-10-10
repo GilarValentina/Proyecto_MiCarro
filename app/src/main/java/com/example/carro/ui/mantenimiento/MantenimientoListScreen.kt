@@ -126,7 +126,7 @@ private fun HistorialTab(
                         Text("Taller: $it", style = MaterialTheme.typography.bodySmall)
                     }
                     Text(
-                        "Total: ${formatearMoneda(m.costoTotal)}  ·  ${resumen.cantidadRepuestos} repuesto(s)",
+                        "Total: ${formatearMoneda(resumen.costoTotal)}  ·  ${resumen.cantidadRepuestos} repuesto(s)",
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Medium
                     )

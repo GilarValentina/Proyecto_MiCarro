@@ -52,5 +52,6 @@ data class Mantenimiento(
 /** Vista de lista de un mantenimiento con el conteo de repuestos. */
 data class MantenimientoResumen(
     val mantenimiento: Mantenimiento,
-    val cantidadRepuestos: Int
+    val cantidadRepuestos: Int,
+    val costoTotal: Double
 )
