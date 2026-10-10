@@ -117,7 +117,11 @@ class AlertasRepository(
                 alertaDao.eliminarPorDocumento(entity.id)
             } else {
                 sincronizarAlertaDocumento(entity.toDomain(), evaluado.estado, hoy)
-                pendientes += evaluado
+                // RF-31 / RN-08: no se notifica mientras el aviso siga pospuesto a futuro.
+                val alerta = alertaDao.obtenerPorDocumento(entity.id)?.toDomain()
+                if (alerta == null || !alerta.fechaEfectiva.isAfter(hoy)) {
+                    pendientes += evaluado
+                }
             }
         }
         return pendientes
