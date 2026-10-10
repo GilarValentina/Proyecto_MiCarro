@@ -1,10 +1,13 @@
 package com.example.carro.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.carro.MiCarroApplication
+import com.example.carro.ui.alertas.AlertasRoute
 import com.example.carro.ui.home.HomeScreen
 
 /**
@@ -15,12 +18,20 @@ import com.example.carro.ui.home.HomeScreen
 fun MiCarroNavHost(
     navController: NavHostController = rememberNavController()
 ) {
+    val container = (LocalContext.current.applicationContext as MiCarroApplication).container
+
     NavHost(
         navController = navController,
         startDestination = Destinos.INICIO
     ) {
         composable(Destinos.INICIO) {
             HomeScreen(onNavegar = { ruta -> navController.navigate(ruta) })
+        }
+        composable(Destinos.ALERTAS) {
+            AlertasRoute(
+                container = container,
+                onVolver = { navController.popBackStack() }
+            )
         }
     }
 }

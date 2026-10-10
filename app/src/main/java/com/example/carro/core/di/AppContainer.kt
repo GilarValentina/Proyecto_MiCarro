@@ -2,6 +2,7 @@ package com.example.carro.core.di
 
 import android.content.Context
 import com.example.carro.core.database.MiCarroDatabase
+import com.example.carro.data.repository.AlertasRepository
 
 /**
  * Contenedor de dependencias manual (RNF-12: separación de capas y dependencias inyectables).
@@ -10,6 +11,8 @@ import com.example.carro.core.database.MiCarroDatabase
  * repositorios a partir de los DAOs que aquí se publican, sin acoplarse entre sí.
  */
 class AppContainer(context: Context) {
+
+    private val appContext = context.applicationContext
 
     val database: MiCarroDatabase = MiCarroDatabase.getInstance(context)
 
@@ -21,4 +24,8 @@ class AppContainer(context: Context) {
     val repuestoDao get() = database.repuestoDao()
     val documentoDao get() = database.documentoDao()
     val alertaDao get() = database.alertaDao()
+
+    val alertasRepository: AlertasRepository by lazy {
+        AlertasRepository(appContext, documentoDao, alertaDao, vehiculoDao)
+    }
 }

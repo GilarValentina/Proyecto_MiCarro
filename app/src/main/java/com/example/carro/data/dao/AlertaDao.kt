@@ -18,6 +18,15 @@ interface AlertaDao {
     @Query("SELECT * FROM alertas WHERE vehiculoId = :vehiculoId ORDER BY fechaAviso ASC")
     fun observarPorVehiculo(vehiculoId: Long): Flow<List<AlertaEntity>>
 
+    @Query("SELECT * FROM alertas WHERE activa = 1 AND atendida = 0 ORDER BY fechaAviso ASC")
+    suspend fun obtenerActivas(): List<AlertaEntity>
+
+    @Query("SELECT * FROM alertas WHERE documentoId = :documentoId LIMIT 1")
+    suspend fun obtenerPorDocumento(documentoId: Long): AlertaEntity?
+
+    @Query("DELETE FROM alertas WHERE documentoId = :documentoId")
+    suspend fun eliminarPorDocumento(documentoId: Long)
+
     @Insert
     suspend fun insertar(alerta: AlertaEntity): Long
 

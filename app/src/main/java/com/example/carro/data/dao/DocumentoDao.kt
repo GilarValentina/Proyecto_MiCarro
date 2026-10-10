@@ -18,6 +18,12 @@ interface DocumentoDao {
     @Query("SELECT * FROM documentos ORDER BY fechaVencimiento ASC")
     fun observarTodos(): Flow<List<DocumentoEntity>>
 
+    @Query("SELECT * FROM documentos ORDER BY fechaVencimiento ASC")
+    suspend fun obtenerTodos(): List<DocumentoEntity>
+
+    @Query("SELECT * FROM documentos WHERE id = :id")
+    suspend fun obtenerPorId(id: Long): DocumentoEntity?
+
     @Insert
     suspend fun insertar(documento: DocumentoEntity): Long
 
