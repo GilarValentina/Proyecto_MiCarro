@@ -1,5 +1,6 @@
 package com.example.carro.ui.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +17,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.carro.ui.navigation.Destinos
 
 /**
  * Pantalla de inicio provisional (RF-37). Lista los módulos del MVP.
@@ -40,15 +42,19 @@ fun HomeScreen(onNavegar: (String) -> Unit = {}) {
                 style = MaterialTheme.typography.titleMedium
             )
             val modulos = listOf(
-                "Vehículos",
-                "Kilometraje",
-                "Plan de mantenimiento",
-                "Mantenimientos y repuestos",
-                "Alertas y documentos",
-                "Historial y resumen"
+                "Vehículos" to null,
+                "Kilometraje" to null,
+                "Plan de mantenimiento" to null,
+                "Mantenimientos y repuestos" to Destinos.MANTENIMIENTOS,
+                "Alertas y documentos" to null,
+                "Historial y resumen" to null
             )
-            modulos.forEach { modulo ->
-                Card(modifier = Modifier.fillMaxWidth()) {
+            modulos.forEach { (modulo, ruta) ->
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .then(if (ruta != null) Modifier.clickable { onNavegar(ruta) } else Modifier)
+                ) {
                     Text(
                         text = modulo,
                         modifier = Modifier.padding(16.dp),
