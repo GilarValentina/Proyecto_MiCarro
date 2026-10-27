@@ -45,7 +45,7 @@ fun HomeScreen(onNavegar: (String) -> Unit = {}) {
                 "Vehículos" to null,
                 "Kilometraje" to null,
                 "Plan de mantenimiento" to Destinos.PLAN_MANTENIMIENTO,
-                "Mantenimientos y repuestos" to null,
+                "Mantenimientos y repuestos" to Destinos.MANTENIMIENTOS,
                 "Alertas y documentos" to null,
                 "Historial y resumen" to null
             )

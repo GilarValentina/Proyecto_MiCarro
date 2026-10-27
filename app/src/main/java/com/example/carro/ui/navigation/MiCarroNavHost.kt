@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.carro.MiCarroApplication
 import com.example.carro.ui.home.HomeScreen
+import com.example.carro.ui.mantenimiento.MantenimientoRoute
 import com.example.carro.ui.plan.PlanMantenimientoRoute
 
 /**
@@ -29,6 +30,12 @@ fun MiCarroNavHost(
         }
         composable(Destinos.PLAN_MANTENIMIENTO) {
             PlanMantenimientoRoute(
+                container = container,
+                onVolver = { navController.popBackStack() }
+            )
+        }
+        composable(Destinos.MANTENIMIENTOS) {
+            MantenimientoRoute(
                 container = container,
                 onVolver = { navController.popBackStack() }
             )

@@ -2,6 +2,7 @@ package com.example.carro.core.di
 
 import android.content.Context
 import com.example.carro.core.database.MiCarroDatabase
+import com.example.carro.data.repository.MantenimientoRepository
 import com.example.carro.data.repository.PlanMantenimientoRepository
 
 /**
@@ -26,5 +27,8 @@ class AppContainer(context: Context) {
     // Repositorios (cada módulo publica el suyo aquí).
     val planMantenimientoRepository by lazy {
         PlanMantenimientoRepository(actividadDao, categoriaDao, vehiculoDao)
+    }
+    val mantenimientoRepository by lazy {
+        MantenimientoRepository(database, mantenimientoDao, repuestoDao, kilometrajeDao, vehiculoDao)
     }
 }

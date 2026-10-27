@@ -15,6 +15,15 @@ interface RepuestoDao {
     @Query("SELECT * FROM repuestos WHERE mantenimientoId = :mantenimientoId ORDER BY id ASC")
     fun observarPorMantenimiento(mantenimientoId: Long): Flow<List<RepuestoEntity>>
 
+    @Query("SELECT * FROM repuestos WHERE mantenimientoId = :mantenimientoId ORDER BY id ASC")
+    suspend fun obtenerPorMantenimiento(mantenimientoId: Long): List<RepuestoEntity>
+
+    @Query("SELECT COUNT(*) FROM repuestos WHERE mantenimientoId = :mantenimientoId")
+    suspend fun contarPorMantenimiento(mantenimientoId: Long): Int
+
+    @Query("DELETE FROM repuestos WHERE mantenimientoId = :mantenimientoId")
+    suspend fun eliminarPorMantenimiento(mantenimientoId: Long)
+
     @Query("SELECT * FROM repuestos WHERE instaladoActualmente = 1 ORDER BY fechaInstalacion DESC")
     fun observarInstalados(): Flow<List<RepuestoEntity>>
 
