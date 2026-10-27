@@ -31,7 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.carro.domain.alerta.Documento
-import com.example.carro.domain.alerta.TipoDocumento
+import com.example.carro.domain.model.TipoDocumento
 import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)

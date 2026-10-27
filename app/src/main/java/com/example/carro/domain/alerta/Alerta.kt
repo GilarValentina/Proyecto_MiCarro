@@ -1,9 +1,7 @@
 package com.example.carro.domain.alerta
 
+import com.example.carro.domain.model.TipoAlerta
 import java.time.LocalDate
-
-/** Tipo de origen de una alerta local (RF-28, RF-33). */
-enum class TipoAlerta { MANTENIMIENTO, DOCUMENTO }
 
 /**
  * Alerta local mostrada al usuario (RF-28, RF-30, RF-31).

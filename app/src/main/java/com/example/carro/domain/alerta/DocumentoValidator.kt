@@ -1,5 +1,7 @@
 package com.example.carro.domain.alerta
 
+import com.example.carro.domain.model.TipoDocumento
+
 /**
  * Validación de un documento antes de guardarlo (RF-32, RNF-16).
  * No se permiten documentos sin fecha; el tipo siempre está definido por el enum.

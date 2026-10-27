@@ -1,5 +1,6 @@
 package com.example.carro.domain.alerta
 
+import com.example.carro.domain.model.TipoDocumento
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.LocalDate

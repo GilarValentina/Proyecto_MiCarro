@@ -13,8 +13,8 @@ import com.example.carro.domain.alerta.ConfiguracionAlertas
 import com.example.carro.domain.alerta.Documento
 import com.example.carro.domain.alerta.DocumentoConEstado
 import com.example.carro.domain.alerta.EstadoVencimiento
-import com.example.carro.domain.alerta.TipoAlerta
-import com.example.carro.domain.alerta.TipoDocumento
+import com.example.carro.domain.model.TipoAlerta
+import com.example.carro.domain.model.TipoDocumento
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine

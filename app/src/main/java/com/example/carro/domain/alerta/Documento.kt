@@ -1,21 +1,7 @@
 package com.example.carro.domain.alerta
 
+import com.example.carro.domain.model.TipoDocumento
 import java.time.LocalDate
-
-/**
- * Tipo de documento legal con vencimiento (RF-32).
- */
-enum class TipoDocumento(val etiqueta: String) {
-    SOAT("SOAT"),
-    REVISION_TECNOMECANICA("Revisión técnico-mecánica"),
-    SEGURO("Seguro"),
-    OTRO("Otro");
-
-    companion object {
-        fun desde(valor: String): TipoDocumento =
-            entries.firstOrNull { it.name == valor } ?: OTRO
-    }
-}
 
 /**
  * Documento legal del vehículo con fecha de vencimiento (RF-32, RF-33).
