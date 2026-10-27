@@ -2,10 +2,8 @@ package com.example.carro.data.repository
 
 import com.example.carro.data.dao.ActividadDao
 import com.example.carro.data.dao.CategoriaDao
-import com.example.carro.data.dao.VehiculoDao
 import com.example.carro.data.entity.ActividadMantenimientoEntity
 import com.example.carro.data.entity.CategoriaEntity
-import com.example.carro.data.entity.VehiculoEntity
 import com.example.carro.domain.model.EstadoActividad
 import com.example.carro.domain.plan.Actividad
 import com.example.carro.domain.plan.ActividadConEstado
@@ -21,28 +19,8 @@ import java.time.LocalDate
  */
 class PlanMantenimientoRepository(
     private val actividadDao: ActividadDao,
-    private val categoriaDao: CategoriaDao,
-    private val vehiculoDao: VehiculoDao
+    private val categoriaDao: CategoriaDao
 ) {
-
-    /** Vehículo con el que trabaja el plan; se integra con el módulo de vehículos (RF-04). */
-    fun observarPrimerVehiculo(): Flow<VehiculoEntity?> =
-        vehiculoDao.observarActivos().map { it.firstOrNull() }
-
-    /** Crea un vehículo de prueba para poder usar el módulo antes de integrar vehículos. */
-    suspend fun crearVehiculoDemo(): Long =
-        vehiculoDao.insertar(
-            VehiculoEntity(
-                placa = "DEMO-" + (System.currentTimeMillis() % 1000),
-                tipo = "AUTOMOVIL",
-                marca = "Vehículo",
-                linea = "de prueba",
-                modelo = "2020",
-                anio = 2020,
-                kilometrajeActual = 50_000,
-                esPrincipal = true
-            )
-        )
 
     fun observarActividades(
         vehiculoId: Long,

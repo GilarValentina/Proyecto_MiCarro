@@ -42,7 +42,7 @@ fun HomeScreen(onNavegar: (String) -> Unit = {}) {
                 style = MaterialTheme.typography.titleMedium
             )
             val modulos = listOf(
-                "Vehículos" to null,
+                "Vehículos" to Destinos.VEHICULOS,
                 "Kilometraje" to null,
                 "Plan de mantenimiento" to Destinos.PLAN_MANTENIMIENTO,
                 "Mantenimientos y repuestos" to Destinos.MANTENIMIENTOS,

@@ -3,10 +3,8 @@ package com.example.carro.data.repository
 import android.content.Context
 import com.example.carro.data.dao.AlertaDao
 import com.example.carro.data.dao.DocumentoDao
-import com.example.carro.data.dao.VehiculoDao
 import com.example.carro.data.entity.AlertaEntity
 import com.example.carro.data.entity.DocumentoEntity
-import com.example.carro.data.entity.VehiculoEntity
 import com.example.carro.domain.alerta.Alerta
 import com.example.carro.domain.alerta.CalculadorVencimiento
 import com.example.carro.domain.alerta.ConfiguracionAlertas
@@ -29,8 +27,7 @@ import java.time.LocalDate
 class AlertasRepository(
     context: Context,
     private val documentoDao: DocumentoDao,
-    private val alertaDao: AlertaDao,
-    private val vehiculoDao: VehiculoDao
+    private val alertaDao: AlertaDao
 ) {
 
     private val prefs = context.applicationContext
@@ -158,25 +155,6 @@ class AlertasRepository(
             alertaDao.actualizar(existente.copy(causa = causa, activa = true))
         }
     }
-
-    // ---- Vehículo (integración futura con el módulo de Gilar) ----
-
-    fun observarPrimerVehiculo(): Flow<VehiculoEntity?> =
-        vehiculoDao.observarActivos().map { it.firstOrNull() }
-
-    suspend fun crearVehiculoDemo(): Long =
-        vehiculoDao.insertar(
-            VehiculoEntity(
-                placa = "DEMO-" + (System.currentTimeMillis() % 1000),
-                tipo = "AUTOMOVIL",
-                marca = "Vehículo",
-                linea = "de prueba",
-                modelo = "2020",
-                anio = 2020,
-                kilometrajeActual = 50_000,
-                esPrincipal = true
-            )
-        )
 }
 
 private fun DocumentoEntity.toDomain(): Documento = Documento(

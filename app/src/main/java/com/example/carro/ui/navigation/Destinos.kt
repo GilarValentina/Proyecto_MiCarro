@@ -11,4 +11,10 @@ object Destinos {
     const val MANTENIMIENTOS = "mantenimientos"
     const val ALERTAS = "alertas"
     const val HISTORIAL = "historial"
+
+    // Formulario de vehículo: sin id registra uno nuevo, con id lo edita.
+    const val ARG_VEHICULO_ID = "vehiculoId"
+    const val VEHICULO_FORM = "vehiculos/form?$ARG_VEHICULO_ID={$ARG_VEHICULO_ID}"
+    fun vehiculoForm(id: Long? = null): String =
+        if (id == null) "vehiculos/form" else "vehiculos/form?$ARG_VEHICULO_ID=$id"
 }

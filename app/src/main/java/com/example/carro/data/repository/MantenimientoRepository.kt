@@ -8,7 +8,6 @@ import com.example.carro.data.dao.RepuestoDao
 import com.example.carro.data.dao.VehiculoDao
 import com.example.carro.data.entity.MantenimientoEntity
 import com.example.carro.data.entity.RepuestoEntity
-import com.example.carro.data.entity.VehiculoEntity
 import com.example.carro.domain.mantenimiento.Mantenimiento
 import com.example.carro.domain.mantenimiento.MantenimientoResumen
 import com.example.carro.domain.mantenimiento.Repuesto
@@ -79,23 +78,6 @@ class MantenimientoRepository(
     suspend fun eliminar(mantenimiento: Mantenimiento) {
         mantenimientoDao.eliminar(mantenimiento.toEntity())
     }
-
-    fun observarPrimerVehiculo(): Flow<VehiculoEntity?> =
-        vehiculoDao.observarActivos().map { it.firstOrNull() }
-
-    suspend fun crearVehiculoDemo(): Long =
-        vehiculoDao.insertar(
-            VehiculoEntity(
-                placa = "DEMO-" + (System.currentTimeMillis() % 1000),
-                tipo = "AUTOMOVIL",
-                marca = "Vehículo",
-                linea = "de prueba",
-                modelo = "2020",
-                anio = 2020,
-                kilometrajeActual = 50_000,
-                esPrincipal = true
-            )
-        )
 }
 
 private fun MantenimientoEntity.toDomain(repuestos: List<Repuesto>): Mantenimiento = Mantenimiento(
