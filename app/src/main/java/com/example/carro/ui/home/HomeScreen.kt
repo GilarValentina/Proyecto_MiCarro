@@ -46,7 +46,7 @@ fun HomeScreen(onNavegar: (String) -> Unit = {}) {
                 "Kilometraje" to null,
                 "Plan de mantenimiento" to Destinos.PLAN_MANTENIMIENTO,
                 "Mantenimientos y repuestos" to Destinos.MANTENIMIENTOS,
-                "Alertas y documentos" to null,
+                "Alertas y documentos" to Destinos.ALERTAS,
                 "Historial y resumen" to null
             )
             modulos.forEach { (modulo, ruta) ->

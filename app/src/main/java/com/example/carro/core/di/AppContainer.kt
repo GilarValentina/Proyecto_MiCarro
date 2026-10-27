@@ -2,6 +2,7 @@ package com.example.carro.core.di
 
 import android.content.Context
 import com.example.carro.core.database.MiCarroDatabase
+import com.example.carro.data.repository.AlertasRepository
 import com.example.carro.data.repository.MantenimientoRepository
 import com.example.carro.data.repository.PlanMantenimientoRepository
 
@@ -12,6 +13,8 @@ import com.example.carro.data.repository.PlanMantenimientoRepository
  * repositorios a partir de los DAOs que aquí se publican, sin acoplarse entre sí.
  */
 class AppContainer(context: Context) {
+
+    private val appContext = context.applicationContext
 
     val database: MiCarroDatabase = MiCarroDatabase.getInstance(context)
 
@@ -30,5 +33,8 @@ class AppContainer(context: Context) {
     }
     val mantenimientoRepository by lazy {
         MantenimientoRepository(database, mantenimientoDao, repuestoDao, kilometrajeDao, vehiculoDao)
+    }
+    val alertasRepository: AlertasRepository by lazy {
+        AlertasRepository(appContext, documentoDao, alertaDao, vehiculoDao)
     }
 }
